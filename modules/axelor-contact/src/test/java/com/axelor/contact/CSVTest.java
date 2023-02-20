@@ -67,7 +67,7 @@ public class CSVTest {
 
             @Override
             public void handle(Model bean, Exception e) {
-
+                fail("Error while importing bean: " + bean);
             }
         });
 
@@ -91,7 +91,6 @@ public class CSVTest {
             }
         });
         assertArrayEquals(records.stream().map(Title::getCode).toArray(), new String[]{"mr", "mrs", "miss"});
-        log.error("End ");
     }
 
     @Test
@@ -134,7 +133,7 @@ public class CSVTest {
 
             @Override
             public void handle(Model bean, Exception e) {
-
+                fail("Error while importing bean: " + bean);
             }
         });
 
@@ -142,7 +141,6 @@ public class CSVTest {
 
             @Override
             public void configure() throws IOException {
-                // input("titles.csv", new File("src/main/resources/data-demo/input/titles.csv"));
                 input("contacts.csv", new File("src/main/resources/data-demo/input/contacts.csv"));
             }
 
@@ -159,6 +157,5 @@ public class CSVTest {
             }
         });
         assertArrayEquals(new String[]{"Mr Patrice De Saint Steban", "Mr Hugo Wood"}, records.stream().map(Contact::getFullName).toArray());
-        log.error("End ");
     }
 }
