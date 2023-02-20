@@ -6,5 +6,11 @@
     <input file="titles.csv" type="com.axelor.contact.db.Title">
     </input>
     <input file="contacts.csv" type="com.axelor.contact.db.Contact">
+        <bind column="firstName" to="firstName" />
+        <bind column="lastName" to="lastName" />
+        <bind column="notes" to="notes" />
+        <bind column="dateOfBirth" to="dateOfBirth" />
+        <bind to="company" update="true" search="self.id = :company_id_" if="company_id_"/>
+        <bind to="title" update="true" search="self.id = :title_id_" if="title_id_"/>
     </input>
 </csv-inputs>
